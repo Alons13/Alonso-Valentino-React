@@ -1,24 +1,37 @@
 import { useState, useEffect, useContext } from "react"
 import { useParams } from "react-router-dom";
 import React from "react";
-import { getItemsbyId } from "../../Mock";
 import { CardContext } from "../../CardContext/CardContext";
 import swal from 'sweetalert';
+import { db } from "../../services/firebase/firebaseConfig"
+import { getDoc, doc } from "firebase/firestore";
+
 
 
 const ItemDetailContainer = () => {
    const [items, setItems]  = useState({})
-   const params = useParams()
    const [ setCardEmpty ] = useState(false);
    const { addCard } = useContext(CardContext)
+   
+   //const params = useParams()
+   const {itemid} = useParams()
 
        useEffect(() => {
-           getItemsbyId(params.itemid)
-               .then(response =>{
-                   setItems(response)
-           })
+            const docRef = doc(db, 'Items', itemid)
+
+            getDoc(docRef)
+            .then((response) => {
+            const data = response.data();
+            const itemsAdapted = { id: response.id, ...data };
+            setItems(itemsAdapted);
+        })
+      
+    }, [itemid])
+        //    getItemsbyId(params.itemid)
+        //        .then(response =>{
+        //            setItems(response)
+        //    })
            
-       },[params.itemid])       
 
        return(
            <div>
