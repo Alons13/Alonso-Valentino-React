@@ -9,7 +9,7 @@ const CardWidget = () => {
         <button>
             {totalQty
           ? <p>{totalQty}</p>
-          : ""
+          : `${totalQty}`
         }
             <img src={'./images/cart.png'} alt='cart-widget'/>
             

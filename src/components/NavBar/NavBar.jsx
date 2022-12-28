@@ -15,7 +15,6 @@ function Navbar1() {
             <Nav.Link as={Link} to="/">Inicio</Nav.Link>
             <Nav.Link as={Link} to="/category/1">MotherBoards</Nav.Link>
             <Nav.Link as={Link} to="/category/2">Procesadores</Nav.Link>
-            <Nav.Link as={Link} to="/card">Card</Nav.Link>
             <Link to='/card'>
               <CardWidget></CardWidget>
             </Link>

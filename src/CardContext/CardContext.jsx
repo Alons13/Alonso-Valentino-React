@@ -39,10 +39,23 @@ export const CardContextProvider = ({ children }) => {
       return card.some((items) => items.id === id)
     }
 
+    const removeItem = (id) => {
+        const CardAct = card.filter((item) => item.id !== id);
+        setCard(CardAct);
+        if (CardAct.length === 0) {
+          setIsCardEmpty(true)
+        }
+      };
+    
+      const clearList = () => {
+        setCard([]);
+        setIsCardEmpty(true)
+        setTotal([]);
+      };
     
     
     return (
-        <CardContext.Provider value={{card, addCard, isCardEmpty, totalQty}}>
+        <CardContext.Provider value={{card, addCard, removeItem, clearList, isCardEmpty, totalQty}}>
           {children}
         </CardContext.Provider>
       ) 

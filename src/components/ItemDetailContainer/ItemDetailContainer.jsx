@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import React from "react";
 import { getItemsbyId } from "../../Mock";
 import { CardContext } from "../../CardContext/CardContext";
+import swal from 'sweetalert';
+
 
 const ItemDetailContainer = () => {
    const [items, setItems]  = useState({})
@@ -28,7 +30,9 @@ const ItemDetailContainer = () => {
                <button onClick={() => {
                 
                 addCard(items);
-                
+                swal("Producto Agregado al  Carrito!", "Visita el carrito para proceder,  con  la compra", "success");
+
+
 
                 }}>Agregar al Carrito</button>
            </div>

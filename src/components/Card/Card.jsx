@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { CardContext } from "../../CardContext/CardContext";
 import { Link } from "react-router-dom";
+import swal from 'sweetalert';
+
 
 const Card = () => {
     const { card, clearList, isCardEmpty, total, removeItem } =
@@ -36,17 +38,25 @@ const Card = () => {
                   <p> El precio de {items.cantidad} unidad/es, es de $ {items.price * items.cantidad}</p>
                 </div>
                 
-                <button fn={() => removeItem(items.id)}>
-                  X
-                </button>
+                <button onClick={() => {
+                  removeItem(items.id)
+                
+                swal("Producto Eliminado del Carrito!", "", "error");
+
+                }}>X</button>
+
+                
               </div>
             ))}
           </>
           <div>
             <div>
-            <button fn={clearList}>
-                Vaciar Carrito
-            </button>
+            <button onClick={() => {
+                  clearList()
+                
+                swal("Productos Eliminados!", "", "success");
+
+                }}>Eliminar Todos Los Productos</button>  
 
               <Link to={`/`}>
             <button>
