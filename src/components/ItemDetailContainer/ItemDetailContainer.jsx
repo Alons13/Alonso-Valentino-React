@@ -7,10 +7,8 @@ import { db } from "../../services/firebase/firebaseConfig"
 import { getDoc, doc } from "firebase/firestore";
 
 
-
 const ItemDetailContainer = () => {
    const [items, setItems]  = useState({})
-   const [ setCardEmpty ] = useState(false);
    const { addCard } = useContext(CardContext)
    
    //const params = useParams()
@@ -18,7 +16,6 @@ const ItemDetailContainer = () => {
 
        useEffect(() => {
             const docRef = doc(db, 'Items', itemid)
-
             getDoc(docRef)
             .then((response) => {
             const data = response.data();
@@ -27,12 +24,7 @@ const ItemDetailContainer = () => {
         })
       
     }, [itemid])
-        //    getItemsbyId(params.itemid)
-        //        .then(response =>{
-        //            setItems(response)
-        //    })
            
-
        return(
            <div>
                <h1>{items.title}</h1>
@@ -44,8 +36,6 @@ const ItemDetailContainer = () => {
                 
                 addCard(items);
                 swal("Producto Agregado al  Carrito!", "Visita el carrito para proceder,  con  la compra", "success");
-
-
 
                 }}>Agregar al Carrito</button>
            </div>
