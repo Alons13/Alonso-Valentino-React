@@ -1,21 +1,16 @@
-import { useState, useEffect, useContext } from "react"
-import { useParams } from "react-router-dom";
-import React from "react";
-import { CardContext } from "../../CardContext/CardContext";
-import swal from 'sweetalert';
+import {useState, useEffect} from "react";
+import {useParams} from "react-router-dom";
+import ItemDetail from "../ItemDetail/ItemDetail";
 import { db } from "../../services/firebase/firebaseConfig"
 import { getDoc, doc } from "firebase/firestore";
 
-
 const ItemDetailContainer = () => {
-   const [items, setItems]  = useState({})
-   const { addCard } = useContext(CardContext)
-   
-   //const params = useParams()
-   const {itemid} = useParams()
+	const [items, setItems] = useState({});
+	const {itemid} = useParams();
 
-       useEffect(() => {
-            const docRef = doc(db, 'Items', itemid)
+	useEffect(() => {
+
+		const docRef = doc(db, 'Items', itemid)
             getDoc(docRef)
             .then((response) => {
             const data = response.data();
@@ -24,24 +19,9 @@ const ItemDetailContainer = () => {
         })
       
     }, [itemid])
-           
-       return(
-           <div>
-               <h1>{items.title}</h1>
-               <h2>{items.text}</h2>
-               <p>{items.img}</p>
-               <img src={items.img}/>
-               <p>{items.price}</p>
-               <button onClick={() => {
-                
-                addCard(items);
-                swal("Producto Agregado al  Carrito!", "Visita el carrito para proceder,  con  la compra", "success");
 
-                }}>Agregar al Carrito</button>
-           </div>
-       )
-      }
-       
+	
+	return <ItemDetail {...items} />;
+};
 
-
-export default ItemDetailContainer
+export default ItemDetailContainer;

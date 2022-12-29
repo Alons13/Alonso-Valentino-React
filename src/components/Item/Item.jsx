@@ -27,7 +27,8 @@ const Item = (props)  => {
         <p>
            
             {props.text.slice(0, 50)}
-            <p>{props.images}</p>
+            <p>{props.price}</p>
+            <img src={props.img} style={{width:'200px'}} />
         </p>
         
         <div  style={{display: 'flex', margin: 20 }}>

@@ -1,6 +1,6 @@
 import { useState, createContext, useEffect } from "react";
 
-export const CardContext = createContext();
+export const CardContext = createContext([]);
 
 export const CardContextProvider = ({ children }) => {
 
@@ -55,7 +55,7 @@ export const CardContextProvider = ({ children }) => {
     
     
     return (
-        <CardContext.Provider value={{card, addCard, removeItem, clearList, isCardEmpty, totalQty}}>
+        <CardContext.Provider value={{card, addCard, removeItem, clearList, isCardEmpty, totalQty, total}}>
           {children}
         </CardContext.Provider>
       ) 

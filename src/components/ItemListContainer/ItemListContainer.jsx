@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import Item from "../Item/Item"
 import { useParams } from "react-router-dom";
-import { getDocs, collection, query, where } from "firebase/firestore";
+import { getDocs, collection, query, where, orderBy } from "firebase/firestore";
 import { db } from "../../services/firebase/firebaseConfig"
 
 const ItemListContainer = () => {
@@ -12,7 +12,7 @@ const ItemListContainer = () => {
          
             const collectionRef = categoryid
             ? query(collection(db, 'Items'), where('category', '==', categoryid))
-            : collection(db, 'Items')
+            : query(collection(db, 'Items'), orderBy('title'  ))
 
             getDocs(collectionRef).then(response => {
                 const itemsAdapted = response.docs.map(doc =>{

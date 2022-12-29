@@ -27,15 +27,14 @@ const Card = () => {
             <h1>Items a Comprar</h1>
             {card.map((items) => (
               <div key={items.id}>
-                <img
-                  src={items.img}
-                  alt=""/>
+                <img src={items.img} style={{width:'200px'}} />
 
+                  
                 <p>{items.title}</p>
 
                 <div>
                   <p> $ {items.price} Por Unidad.</p>
-                  <p> El precio de {items.cantidad} unidad/es, es de $ {items.price * items.cantidad}</p>
+                  <p> El precio de {items.quantity} unidad/es, es de $ {items.price * items.quantity}</p>
                 </div>
                 
                 <button onClick={() => {
@@ -58,11 +57,13 @@ const Card = () => {
 
                 }}>Eliminar Todos Los Productos</button>  
 
+
               <Link to={`/`}>
             <button>
                 Volver a la Tienda
             </button>
               </Link>
+              
               
               <Link to={`/checkout`}>
             <button>
