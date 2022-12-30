@@ -18,24 +18,30 @@ const ItemCount = ({initial, onAdd}) => {
 	};
 
 	return (
-				<div>
+				<div className="flex flex-wrap items-center justify-center gap-2">
 					<div>
-						<button onClick={() => {
+						<button 
+						className="px-6 py-2 text-base font-black bg-gray-200 rounded active:bg-gray-300 active:shadow-inner hover:shadow-md " 
+						onClick={() => {
 								decrement();
 						}}>
 						-	
 						</button>
 
-						<h4>{count}</h4>
+						<h4 
+						className="px-6 py-2 text-base font-black "
+						>{count}</h4>
 
-						<button onClick={() => {
+						<button 
+						className="px-6 py-2 text-base font-black bg-gray-200 rounded active:bg-gray-300 active:shadow-inner hover:shadow-md "
+						 onClick={() => {
 								increment();
 						}}>
 						+	
 						</button>
 					</div>
-					<button
-						onClick={() => {
+					<button className="px-6 py-2 text-base font-black bg-gray-200 rounded active:bg-gray-300 active:shadow-inner hover:shadow-md "
+					onClick={() => {
 							onAdd(count);
 							swal("Producto Agregado al  Carrito!", "Visita el carrito para proceder,  con  la compra", "success");
 						}}

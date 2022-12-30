@@ -20,15 +20,15 @@ const ItemDetail = ({
 	};
 
 	return (
-		<div>
+		<div className="grid w-full grid-cols-1 gap-4 p-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
 			<h1>Detalle del Item</h1>
-			<div>
-				<img  src={img}/>
+			<div >
+				<img className="fixed left-6 top-50" src={img}/>
 				
-				<div>
-					<h3>{title}</h3>
-					<p>$ {price}</p>
-					<p>{text}</p>
+				<div className="fixed top-80">
+					<h3 className="p-4 text-3xl font-bold text-center w-96">{title}</h3>
+					<p className="font-bold uppercase text-md">$ {price}</p>
+					<p className="font-bold uppercase text-md">{text}</p>
 					<ItemCount initial={0} onAdd={handleOnAdd} />
 					
 				</div>

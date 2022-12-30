@@ -24,20 +24,29 @@ const Card = () => {
       return (
         <>
           <>
-            <h1>Items a Comprar</h1>
+            <h1 className="w-full col-span-1 p-4 pb-0  text-center  my-10 text-2xl md:text-4xl font-thin tracking-wider  font-serif ">Items a Comprar</h1>
             {card.map((items) => (
-              <div key={items.id}>
-                <img src={items.img} style={{width:'200px'}} />
+              <div
+              className="flex px-4 md:px-8 lg:px-16 py-6 my-6 justify-between items-center bg-slate-100 "
+               key={items.id}>
+
+                <img
+                className="rounded-xl max-h-30 w-30 lg:max-h-30 lg:w-30 shadow-lg ml-8 lg:ml-0 shadow-slate-100/80 ring-2 ring-slate-700/50"
+                src={items.img} style={{width:'200px'}} />
 
                   
-                <p>{items.title}</p>
+                <p className="lg:text-lg w-60 md:w-96  font-medium tracking-wide h-12 flex justify-center items-center">
+                  {items.title}</p>
 
-                <div>
-                  <p> $ {items.price} Por Unidad.</p>
-                  <p> El precio de {items.quantity} unidad/es, es de $ {items.price * items.quantity}</p>
+                <div className="flex flex-col items-center sm:flex-row">
+                  <p
+                  className="sm:text-base md:text-lg lg:text-xl w-max-content  font-medium tracking-wide h-12 w-40 flex justify-center items-center"> $ {items.price} Por Unidad.</p>
+                  <p className="w-max-content md:text-xl lg:text-3xl  font-medium tracking-wide h-12 flex justify-center items-center w-24 lg:w-32">=$ {items.price * items.quantity}</p>
                 </div>
                 
-                <button onClick={() => {
+                <button 
+                className="px-6 py-2 text-base font-black bg-gray-200 rounded active:bg-gray-300 active:shadow-inner text-black bg-red-400 "
+                onClick={() => {
                   removeItem(items.id)
                 
                 swal("Producto Eliminado del Carrito!", "", "error");
@@ -50,7 +59,9 @@ const Card = () => {
           </>
           <div>
             <div>
-            <button onClick={() => {
+            <button 
+            className="px-6 py-2 text-base font-black  rounded active:bg-gray-300 active:shadow-inner text-black bg-red-400 "
+            onClick={() => {
                   clearList()
                 
                 swal("Productos Eliminados!", "", "success");
@@ -59,20 +70,22 @@ const Card = () => {
 
 
               <Link to={`/`}>
-            <button>
+            <button
+            className="px-6 py-2 text-base font-black bg-gray-200 rounded active:bg-gray-300 active:shadow-inner text-black bg-blue-400/80">
                 Volver a la Tienda
             </button>
               </Link>
               
               
               <Link to={`/checkout`}>
-            <button>
+            <button
+            className="px-6 py-2 text-base font-black bg-gray-200 rounded active:bg-gray-300 active:shadow-inner bg-green-400/80 text-black">
                 Finalizar Compra
             </button>
               </Link>
 
             </div>
-            <p>  Total de la compra: $ {getTotalCard()}</p>
+            <p className="p-3 text-xl md:text-2xl lg:text-3xl font-thin tracking-wider  font-serif ">  Total de la compra: $ {getTotalCard()}</p>
           </div>
         </>
       );
