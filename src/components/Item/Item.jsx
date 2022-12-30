@@ -17,17 +17,23 @@ import { Link } from "react-router-dom"
 
 const Item = (props)  => {
     return (
-        <div>
+        <div >
         <h1>{props.greeting}</h1>
            <Link to ={`/item/${props.id}`}>
                 
-                <h2>{props.title}</h2>
+                <h2
+                
+                >{props.title}</h2>
                 
             </Link>
-        <p>
+        <p
+        className=
+        "p-2 mb-5 w-max-content text-lg text-black font-medium tracking-wide h-30">
            
             {props.text.slice(0, 50)}
-            <p>${props.price}</p>
+            <p
+            className="block antialiased font-sans text-lg font-light leading-normal text-black mr-3 mt-2"
+            >${props.price}</p>
             <img src={props.img} style={{width:'200px'}} />
         </p>
         

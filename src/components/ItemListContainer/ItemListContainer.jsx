@@ -25,7 +25,7 @@ const ItemListContainer = () => {
     
     return(
 
-        <div>
+        <div   className="flex flex-col items-center justify-center w-full text-4xl ItemListContainer">
             <h1>Listado de Items</h1>
         { items.map(item => 
         <Item 

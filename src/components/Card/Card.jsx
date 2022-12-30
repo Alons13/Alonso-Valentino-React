@@ -11,9 +11,12 @@ const Card = () => {
       if (isCardEmpty) {
         return (
           <div>
-            <h1>Carrito vacio</h1>
+            <h1
+            className="w-full col-span-1 p-4 pb-0  text-center  my-10 text-2xl md:text-4xl font-thin tracking-wider  font-serif "
+            >Carrito vacio</h1>
             <Link to={`/`}>
-              <button>
+              <button 
+              className="px-6 py-2 text-base  col-span-1 p-4 pb-0  text-center  my-10 font-black bg-gray-200 rounded active:bg-gray-300 active:shadow-inner text-black bg-blue-400/80">
                 Volver a la tienda
               </button>
             </Link>
