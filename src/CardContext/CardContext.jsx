@@ -26,8 +26,8 @@ export const CardContextProvider = ({ children }) => {
 
     const getTotalCard = () => {
       let totalCard = 0;
-      card.forEach((item) => {
-        let subTotal = item.price * item.quantity;
+      card.forEach((items) => {
+        let subTotal = items.price * items.quantity;
         totalCard += subTotal;
       });
       return totalCard;

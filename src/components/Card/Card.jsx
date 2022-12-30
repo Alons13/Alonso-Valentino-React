@@ -72,7 +72,7 @@ const Card = () => {
               </Link>
 
             </div>
-            <p>  Total de la compra: $ {getTotalCard}</p>
+            <p>  Total de la compra: $ {getTotalCard()}</p>
           </div>
         </>
       );

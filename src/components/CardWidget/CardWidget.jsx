@@ -7,10 +7,10 @@ const CardWidget = () => {
 
     return(
         <button>
-            {getCardCounter
-          ? <p>{getCardCounter}</p>
-          : `${getCardCounter}`
-        }
+            
+           <p>{getCardCounter()}</p>
+          
+        
             <img src={'./images/cart.png'} alt='cart-widget'/>
             
         </button>

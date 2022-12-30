@@ -7,7 +7,7 @@ import { db } from "../../services/firebase/firebaseConfig";
 
 const Checkout = () => {
   
-  const { card, total } = useContext(CardContext);
+  const { card, getTotalCard } = useContext(CardContext);
 
   const handleCreateOrder = () => {
     const objOrder ={
@@ -17,7 +17,7 @@ const Checkout = () => {
             phone: '123456789'
         },
         items: card,
-        //total: total
+        //total: getTotalCard(),
     }
     const orderRef  = collection(db, 'orders')
 
@@ -55,7 +55,7 @@ const Checkout = () => {
       ))}
       <div>
         <p>
-          Total de la compra: $ {total}
+          Total de la compra: $ {getTotalCard()}
         </p>
         <button onClick={handleCreateOrder}>
           Confirmar Orden

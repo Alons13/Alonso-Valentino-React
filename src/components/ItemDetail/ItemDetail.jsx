@@ -1,7 +1,6 @@
 import { CardContext } from "../../CardContext/CardContext";
 import ItemCount from "../ItemCount/ItemCount";
 import {useState, useContext} from "react";
-import swal from "sweetalert";
 
 
 const ItemDetail = ({
@@ -25,12 +24,12 @@ const ItemDetail = ({
 			<h1>Detalle del Item</h1>
 			<div>
 				<img  src={img}/>
+				
 				<div>
 					<h3>{title}</h3>
 					<p>$ {price}</p>
 					<p>{text}</p>
 					<ItemCount initial={0} onAdd={handleOnAdd} />
-					
 					
 				</div>
 			</div>
