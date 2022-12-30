@@ -5,7 +5,7 @@ import swal from 'sweetalert';
 
 
 const Card = () => {
-    const { card, clearList, isCardEmpty, total, removeItem } =
+    const { card, clearList, isCardEmpty, getTotalCard, removeItem } =
       useContext(CardContext);
 
       if (isCardEmpty) {
@@ -72,7 +72,7 @@ const Card = () => {
               </Link>
 
             </div>
-            <p>  Total de la compra: $ {total}</p>
+            <p>  Total de la compra: $ {getTotalCard}</p>
           </div>
         </>
       );

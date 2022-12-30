@@ -24,16 +24,35 @@ export const CardContextProvider = ({ children }) => {
         }
     };
 
-    const totalCard = card.reduce((acc, currentValue) => acc + currentValue.total, 0);
-    const totalQty = card.reduce((acc, currentValue) => acc + currentValue.cantidad, 0);
+    const getTotalCard = () => {
+      let totalCard = 0;
+      card.forEach((item) => {
+        let subTotal = item.price * item.quantity;
+        totalCard += subTotal;
+      });
+      return totalCard;
+    };
+    const getCardCounter = () => {
+      let totalQuantity = 0;
+  
+      card.forEach((item) => {
+        totalQuantity += item.quantity;
+      });
+      return totalQuantity;
+    };
+
+
+
+    //const totalCard = card.reduce((acc, currentValue) => acc + currentValue.total, 0);
+    //const totalQty = card.reduce((acc, currentValue) => acc + currentValue.cantidad, 0);
 
     useEffect(() => {
         setCard(card);
     }, [card]);
 
-    useEffect(() => {
-        setTotal(totalCard)
-    }, [totalCard]);
+    //useEffect(() => {
+    //    setTotal(totalCard)
+    //}, [totalCard]);
 
     const isInCard = (id) => {
       return card.some((items) => items.id === id)
@@ -55,7 +74,7 @@ export const CardContextProvider = ({ children }) => {
     
     
     return (
-        <CardContext.Provider value={{card, addCard, removeItem, clearList, isCardEmpty, totalQty, total}}>
+        <CardContext.Provider value={{card, addCard, removeItem, clearList, isCardEmpty,  total, getTotalCard, getCardCounter}}>
           {children}
         </CardContext.Provider>
       ) 

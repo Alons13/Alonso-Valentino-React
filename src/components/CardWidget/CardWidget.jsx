@@ -3,13 +3,13 @@ import { CardContext } from "../../CardContext/CardContext";
 
 const CardWidget = () => {
 
-    const { totalQty } = useContext(CardContext)
+    const { getCardCounter } = useContext(CardContext)
 
     return(
         <button>
-            {totalQty
-          ? <p>{totalQty}</p>
-          : `${totalQty}`
+            {getCardCounter
+          ? <p>{getCardCounter}</p>
+          : `${getCardCounter}`
         }
             <img src={'./images/cart.png'} alt='cart-widget'/>
             
