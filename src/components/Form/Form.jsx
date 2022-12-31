@@ -1,55 +1,57 @@
 import { useContext, useState } from 'react'
 import { CardContext } from "../../CardContext/CardContext";
-import swal from 'sweetalert';
-
 import { collection, getDocs, query, where, documentId, writeBatch, addDoc } from 'firebase/firestore'
 import { db } from '../../services/firebase/firebaseConfig'
 
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
-
-const Form1 = () => { 
+const Form = () => {
     const { card, getTotalCard,  } = useContext(CardContext)
     const [name,setName]=useState()
     const [phone,setPhone]=useState()
     const [email,setEmail]=useState()
 
+    const navigate = useNavigate()
 
     const handleCreateOrder = async () => {
         
 
-        
-        const objOrder = {
-            buyer: {
-                name: name,
-                email: email,
-                phone: phone,
+       
+            const objOrder = {
+                buyer: {
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    
+                    
+                },
+                //items: card,
+                total: getTotalCard()
+            }
+    
+            const batch = writeBatch(db)
+    
+            
+    
+            if(!name || !email || !phone) {
                 
-            },
-            items: card,
-            total: getTotalCard()
-        }
-        const batch = writeBatch(db)
-    
-            
-    
-           
-    
-    
-            
-    
-            
-    
-            if (!name || !email || !phone) {
-                swal("Producto Eliminado del Carrito!", "", "error");
-              } else {
+                console.log('Hay productos fuera de stock')
+            } else {
                 await batch.commit()
+    
                 const orderRef = collection(db, 'orders')
-                addDoc(objOrder, orderRef)
-              }
-            
-         
+    
+                const orderAdded = await addDoc(orderRef, objOrder)
+    
+                
+    
+                setTimeout(() => {
+                    navigate('/')
+                }, 2000)
+                console.log(orderAdded.id)
+            }
+        
     } 
        
 
@@ -93,7 +95,6 @@ const Form1 = () => {
 						onChange={(e) => setPhone(e.target.value)}
 					/>
                     
-                    
 					<button className='boton' type="submit">Confirmar Orden</button>
 				</form>
 			</div>
@@ -101,10 +102,9 @@ const Form1 = () => {
 			<Link to={"/"}>Volver a Home</Link>
 		</div>
             </main>
-            {/* <button onClick={handleCreateOrder}>Confirmar orden</button> */}
+            
         </div>
     )
 }
 
-export default Form1
-
+export default Form

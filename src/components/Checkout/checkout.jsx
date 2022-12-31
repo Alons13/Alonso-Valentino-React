@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const Checkout = () => {
   
   const { card, getTotalCard } = useContext(CardContext);
+  
 
   
 
