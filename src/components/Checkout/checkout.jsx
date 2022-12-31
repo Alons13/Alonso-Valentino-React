@@ -1,32 +1,12 @@
-import { useState, useContext } from "react";
+import {  useContext } from "react";
 import { CardContext } from "../../CardContext/CardContext";
-import { addDoc, collection } from 'firebase/firestore'
-import { db } from "../../services/firebase/firebaseConfig";
-
+import { Link } from "react-router-dom";
 
 
 const Checkout = () => {
   
   const { card, getTotalCard } = useContext(CardContext);
 
-  const handleCreateOrder = () => {
-    const objOrder ={
-        buyer: {
-            name: 'Valentino Alonso',
-            email: 'valentino.alonsonovillo@gmail.com',
-            phone: '123456789'
-        },
-        items: card,
-        //total: getTotalCard(),
-    }
-    const orderRef  = collection(db, 'orders')
-
-    addDoc(orderRef, objOrder)
-        .then(response => {
-            console.log(response.id)
-        })
-
-  }
   
 
   return (
@@ -42,7 +22,8 @@ const Checkout = () => {
         
           <img 
           className="rounded-xl max-h-20 w-20 lg:max-h-28 lg:w-28 shadow-lg ml-8 lg:ml-0 shadow-slate-100/80 ring-2 ring-slate-700/50"
-          src={items.img}  />
+          src={items.img}
+          alt=""  />
 
           <p className="lg:text-lg w-60 md:w-96  font-medium tracking-wide h-12 flex justify-center items-center">
             {items.title}
@@ -62,12 +43,14 @@ const Checkout = () => {
         <p className="p-3 text-xl md:text-2xl lg:text-3xl font-thin tracking-wider  font-serif ">
           Total de la compra = $ {getTotalCard()}
         </p>
-        <button 
-        className="p-3 text-xl md:text-2xl lg:text-3xl font-thin tracking-tighter  font-serif bg-green-400/80  transition-all rounded-lg px-4"
-        onClick={handleCreateOrder}>
-          Confirmar Orden
-        </button>
-      
+        <Link to={`/form`}>
+              <button 
+              className="p-3 text-xl md:text-2xl lg:text-3xl font-thin tracking-tighter  font-serif bg-green-400/80  transition-all rounded-lg px-4">
+              Continuar
+              </button>
+            </Link>
+
+
       </div>
     </>
   );

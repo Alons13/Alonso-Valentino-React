@@ -18,12 +18,13 @@ const ItemDetail = ({
 		setCantidadAgregar(quantity);
 		addCard({id, img, price, title, quantity});
 	};
-
+//className="rounded-xl max-h-30 w-30 lg:max-h-30 lg:w-30 shadow-lg ml-8 lg:ml-0 shadow-slate-100/80 ring-2 ring-slate-700/50"
+//flex rounded-xl max-h-50 w-50 lg:max-h-50 lg:w-50 shadow-lg ml-8 lg:ml-0 
 	return (
-		<div className="grid w-full grid-cols-1 gap-4 p-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
+		<div >
 			<h1>Detalle del Item</h1>
 			<div >
-				<img className="fixed left-6 top-50" src={img}/>
+				<img className="absolute inset-y-80 right-40 w-40 ..." src={img}/>
 				
 				<div className="fixed top-80">
 					<h3 className="p-4 text-3xl font-bold text-center w-96">{title}</h3>

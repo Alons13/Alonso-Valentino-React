@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Card from './components/Card/Card'
 import Checkout from "./components/Checkout/checkout";
 import { CardContextProvider } from './CardContext/CardContext';
-
+import Form1 from "./components/Form/Form";
 
 function App() {
   
@@ -21,7 +21,8 @@ function App() {
             <Route path='/category/:categoryid' element={<ItemListContainer />}/>
             <Route path='/item/:itemid' element={<ItemDetailContainer />} />
             <Route path='/card' element={<Card />} />
-            <Route path='/checkout' element={<Checkout />} />          
+            <Route path='/checkout' element={<Checkout />} />
+            <Route path='/form' element={<Form1 />} />          
           
           </Routes>
         </BrowserRouter>
