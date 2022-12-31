@@ -16,7 +16,12 @@ const Form = () => {
 
     const handleCreateOrder = async () => {
         
-
+            const itemsFire = card.map((items) => ({
+                id: items.id,
+                title:items.title,
+                price: items.price,
+                quantity: items.quantity,
+            }))
        
             const objOrder = {
                 buyer: {
@@ -26,7 +31,7 @@ const Form = () => {
                     
                     
                 },
-                //items: card,
+                items: itemsFire,
                 total: getTotalCard()
             }
     
@@ -36,7 +41,7 @@ const Form = () => {
     
             if(!name || !email || !phone) {
                 
-                console.log('Hay productos fuera de stock')
+                console.log('Ingresa todos los Datos')
             } else {
                 await batch.commit()
     
